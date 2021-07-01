@@ -43,6 +43,12 @@ const ShopSchema = new mongoose.Schema({
         trim: true,
         lowercase: true
     },
+    slogan: {
+        type: String,
+        required: true,
+        trim: true,
+        lowercase: true
+    },
     password: {
         type: String,
         required: true,

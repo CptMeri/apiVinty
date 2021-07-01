@@ -22,7 +22,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 app.use(routes)
 
-const PORT = process.env.PORT || 8000
+const PORT = process.env.PORT || 1223
 
 app.listen(PORT, () => {
     console.log(`Le serveur est lancé sur le port : ${PORT}`)

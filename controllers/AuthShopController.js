@@ -95,7 +95,7 @@ export const deleteShop = async (req, res) => {
 
 //Shop SignUp
 export const shopSignup = async (req, res, next) => {
-    let { name, lastname, email, city, adressShop, shop_name, description, password, passwordcfm } = req.body;
+    let { name, lastname, email, city, adressShop, shop_name, description, slogan, password, passwordcfm } = req.body;
 
     let errors = [];
     if (!name) {
@@ -118,6 +118,9 @@ export const shopSignup = async (req, res, next) => {
     }
     if (!description) {
         errors.push({ description: "required" });
+    }
+    if (!slogan) {
+        errors.push({ slogan: "required" });
     }
     if (!emailRegexp.test(email)) {
         errors.push({ email: "invalid" });
@@ -148,6 +151,7 @@ export const shopSignup = async (req, res, next) => {
                     adressShop: adressShop,
                     shop_name: shop_name,
                     description: description,
+                    slogan: slogan,
                     password: password,
                     passwordcfm: passwordcfm,
                 });
