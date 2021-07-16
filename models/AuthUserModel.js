@@ -2,7 +2,7 @@ import mongoose from 'mongoose'
 
 const UserSchema = new mongoose.Schema({
 
-// Nom prenom mail date de naissance et mdps
+    // Nom prenom mail date de naissance et mdps
     name: {
         type: String,
         required: true,

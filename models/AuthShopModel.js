@@ -22,32 +22,32 @@ const ShopSchema = new mongoose.Schema({
     city: {
         type: String,
         required: true,
-        trim: true,
-        lowercase: true
+        trim: true
+        //lowercase: true
     },
     adressShop: {
         type: String,
         required: true,
-        trim: true,
-        lowercase: true
+        trim: true
+        //lowercase: true
     },
     shop_name: {
         type: String,
         required: true,
-        trim: true,
-        lowercase: true
+        trim: true
+        //lowercase: true
     },
     description: {
         type: String,
         required: true,
-        trim: true,
-        lowercase: true
+        trim: true
+        //lowercase: true
     },
     slogan: {
         type: String,
         required: true,
-        trim: true,
-        lowercase: true
+        trim: true
+        //lowercase: true
     },
     password: {
         type: String,

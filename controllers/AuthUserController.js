@@ -62,7 +62,7 @@ export const userSignup = async (req, res, next) => {
         errors.push({ email: "required" });
     }
     if (!date) {
-        errors.push({ description: "required" });
+        errors.push({ date: "required" });
     }
     if (!emailRegexp.test(email)) {
         errors.push({ email: "invalid" });

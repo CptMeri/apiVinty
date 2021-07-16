@@ -1,6 +1,7 @@
 import express from 'express';
 import multer from 'multer';
 import path from 'path';
+import fs from 'fs';
 import {
     getTest,
     postTest,
@@ -61,6 +62,24 @@ router.post('/api/product', upload.array("photos"), function (req, res) {
     addProduct(req, res);
 }, catchErrors(addProduct));
 
+router.post('/api/profilboutique', upload.single("recfile"), function (req, res) {
+    var oldPath = req.file.path;
+    var newPath = 'uploads/profile/' + req.body.idboutique + '.png'
+    fs.rename(oldPath, newPath, function (err) {
+        if (err) throw err
+        console.log('Successfully renamed - AKA moved!')
+        res.send('Successfully upload!')
+    });
+});
+router.post('/api/profilboutiqueBis', upload.single("recfile"), function (req, res) {
+    var oldPath = req.file.path;
+    var newPath = 'uploads/profilebis/' + req.body.idboutique + '.png'
+    fs.rename(oldPath, newPath, function (err) {
+        if (err) throw err
+        console.log('Successfully renamed - AKA moved!')
+        res.send('Successfully upload!')
+    });
+});
 
 router.get('/api/products', catchErrors(getProducts))
 router.get('/api/product/:id', catchErrors(getProduct))
