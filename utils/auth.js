@@ -5,7 +5,7 @@ const createJWT = (email, userId, duration) => {
       userId,
       duration
    };
-   return jwt.sign(payload, "correct horse battery staple", {
+   return jwt.sign(payload, process.env.TOKEN_SECRET, {
      expiresIn: duration,
    });
 };

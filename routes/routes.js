@@ -25,13 +25,8 @@ import {
     userSignup,
     userSignin
 } from '../controllers/AuthUserController.js';
-
-//create require func
 import { catchErrors } from './../helpers.js';
-import { createRequire } from "module";
-const require = createRequire(import.meta.url);
-//stripe key
-const stripe = require("stripe")("sk_test_51JEBV2BoY10D9MdLkEbaZMDCFvfhoPFhF4HEyIWh7f6onxBYNO1x7llS2lpa14YXqKOuHn75iZHTOxd95WRRQoJY00s1jJPI03");
+
 
 const router = express.Router()
 
@@ -85,27 +80,6 @@ router.post('/api/profilboutiqueBis', upload.single("recfile"), function (req, r
         res.send('Successfully upload!')
     });
 });
-const calculateOrderAmount = items => {
-    // Replace this constant with a calculation of the order's amount
-    // Calculate the order total on the server to prevent
-    // people from directly manipulating the amount on the client
-    let amount = 0;
-    for(let i in items){
-        amount += ((parseInt(items[i].prix) * 100) * items[i].quantity)
-    }
-    return amount;
-  };
-router.post("/api/create-payment-intent", async (req, res) => {
-    const { items } = req.body;
-    // Create a PaymentIntent with the order amount and currency
-    const paymentIntent = await stripe.paymentIntents.create({
-      amount: calculateOrderAmount(items),
-      currency: "eur",
-    });
-    res.send({
-      clientSecret: paymentIntent.client_secret
-    });
-  });
 
 router.get('/api/products', catchErrors(getProducts))
 router.get('/api/product/:id', catchErrors(getProduct))
