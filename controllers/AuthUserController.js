@@ -156,7 +156,7 @@ export const userSignin = async (req, res) => {
                     User._id,
                     3600
                 );
-                jwt.verify(access_token, "correct horse battery staple", (err, decoded) => {
+                jwt.verify(access_token, process.env.TOKEN_SECRET, (err, decoded) => {
                     if (err) {
                         res.status(500).json({ erros: err });
                     }
