@@ -218,7 +218,7 @@ export const shopSignin = async (req, res) => {
                     Shop._id,
                     3600
                 );
-                jwt.verify(access_token, process.env.TOKEN_SECRET, (err, decoded) => {
+                jwt.verify(access_token, "correct horse battery staple", (err, decoded) => {
                     if (err) {
                         res.status(500).json({ erros: err });
                     }

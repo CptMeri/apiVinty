@@ -11,7 +11,7 @@ const app = express()
 app.use(cors())
 
 //db
-mongoose.connect(process.env.MONGODB, {
+mongoose.connect("mongodb+srv://lukdev:Crapule.03@cluster0.cc3rm.mongodb.net/NODE-API?retryWrites=true&w=majority", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false
